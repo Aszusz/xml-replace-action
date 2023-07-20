@@ -4,18 +4,19 @@ import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
 import { readFileSync, writeFileSync } from 'fs';
 
 try {
-    let filePath = getInput('filepath', {required: true});
-    let xpathString = getInput('xpath', {required: true});
-    let replaceString = getInput('replace');
+    const filePath = getInput('filepath', {required: true});
+    const xpathString = getInput('xpath', {required: true});
+    const replaceString = getInput('replace');
 
-    writeFile(filePath, xpathString, replaceString);
+    const oldContent = readFileSync(filePath, 'utf8');
+    const newContent = replace(oldContent, xpathString, replaceString);
+    writeFileSync(filePath, newContent);
 } catch (error) {
     console.log(error)
     setFailed(error.message);
 }
 
-function writeFile(filePath, xpathString, replaceString) {
-    const content = readFileSync(filePath, 'utf8');
+function replace(content, xpathString, replaceString) {
     const document = new DOMParser().parseFromString(content);
 
     const nodes = select(xpathString, document);
@@ -30,7 +31,7 @@ function writeFile(filePath, xpathString, replaceString) {
                 node.textContent = replaceString;
             }
         }
-        writeFileSync(filePath, new XMLSerializer().serializeToString(document));
+        return new XMLSerializer().serializeToString(document)
     }
 }
 
