@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@actions/core": "^1.2.6",
-    "xmldom": "^0.4.0",
-    "xpath": "^0.0.32"
+    "@actions/core": "^1.10.0",
+    "@xmldom/xmldom": "^0.8.10",
+    "xpath": "^0.0.33"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
