@@ -1,7 +1,7 @@
 {
   "name": "xml-replace-action",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "Simple github action to replace a value in a xml config file",
   "main": "index.js",
   "type": "module",
   "scripts": {

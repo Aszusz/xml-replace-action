@@ -1,4 +1,6 @@
-XML-Replace-Action
+This repository is a fork of: https://github.com/rvolo/xml-replace-action
+
+# XML-Replace-Action
 
 Simple github action to replace a value in a xml config file
 
